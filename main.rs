@@ -262,4 +262,18 @@ impl ContentStore for MemoryStore {
 }
    
 #[tokio::main]
-//Continue
+async fn main() -> Result<(), Box<dyn Error>> {
+    let config = Crawler{
+        max_depth: 2,
+        max_pages: 50,
+        concurrent_requests: 8,
+        delay_ms: 200,
+        user_agent: "RustWebCrawler/1.0 (https://example.com/bot)".to_string(),
+        respect_robots_txt: true;
+    };
+    let crawler = Crawler::new(config).await?;
+    let seed_urls = vec!["https://www.rust-lang.org/".to_string(), "https://doc.rust-lang.org/book/".to_string(),];
+    let results = crawler.run(seed_urls).await?;
+    println!("Crawling completed. Crawked {} pages.", results.len());
+    Ok(())
+}
