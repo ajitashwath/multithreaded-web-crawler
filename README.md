@@ -1,5 +1,4 @@
 # Web Crawler
-
 A concurrent web crawler written in Rust that can efficiently crawl websites while respecting robots.txt and implementing proper rate limiting.
 
 ## Features
@@ -23,8 +22,8 @@ A concurrent web crawler written in Rust that can efficiently crawl websites whi
 ### Clone and Build
 
 ```bash
-git clone <repository-url>
-cd web-crawler
+git clone https://github.com/ajitashwath/multithreaded-web-crawler
+cd multithreaded-web-crawler
 cargo build --release
 ```
 
